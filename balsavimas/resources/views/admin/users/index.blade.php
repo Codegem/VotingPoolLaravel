@@ -14,6 +14,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
+                            <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>                          
@@ -26,11 +27,13 @@
                                     {{ implode(',', $user->grupes()->get()->pluck('Group_Name')->toArray()) }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.users.edit', $user->id)}} " class="btn btn-primary float-left">Edit</a>
+                                    <a href="{{ route('admin.users.edit', $user->id)}} " class="btn btn-primary">Edit</a>
+                                </td>
+                                <td>    
                                     <form action="{{ route('admin.users.destroy', $user)}}" method="POST">
                                         @csrf
                                         {{method_field('DELETE')}}
-                                    <button type="submit" class="btn btn-warning float-left">Delete</button>
+                                    <button type="submit" class="btn btn-warning">Delete</button>
                                     </form>
                                 </td>
                             </tr>
