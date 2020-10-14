@@ -47,4 +47,19 @@ class User extends Authenticatable
     public function grupes(){
         return $this->belongsToMany(Grupes::class);
     }
+
+    public function turiGrupes($grupes){
+        if($this->grupes()->whereIn('Group_Name', $grupes)->first()){
+            return true;
+        }
+        return false;
+    }
+
+    public function turiGrupe($grupe){
+        if($this->grupes()->where('Group_Name', $grupe)->first()){
+            return true;
+        }
+        return false;
+    }
+
 }

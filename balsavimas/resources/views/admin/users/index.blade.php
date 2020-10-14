@@ -27,14 +27,18 @@
                                     {{ implode(',', $user->grupes()->get()->pluck('Group_Name')->toArray()) }}
                                 </td>
                                 <td>
+                                    @can('edit_users')
                                     <a href="{{ route('admin.users.edit', $user->id)}} " class="btn btn-primary">Edit</a>
+                                    @endcan
                                 </td>
-                                <td>    
+                                <td> 
+                                    @can('delete_users')   
                                     <form action="{{ route('admin.users.destroy', $user)}}" method="POST">
                                         @csrf
                                         {{method_field('DELETE')}}
                                     <button type="submit" class="btn btn-warning">Delete</button>
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach

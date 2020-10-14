@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Controller;
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Grupes;
@@ -28,6 +29,10 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        // tikrinu ar useris gali editint kitus users
+        if(Gate::denies('edit_users')){
+            return redirect(route('admin.users.index'));
+        }
         $grupes = Grupes::all();
         return view('admin.users.edit', compact('user', 'grupes'));
     }
@@ -54,6 +59,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        if(Gate::denies('delete_users')){
+            return redirect(route('admin.users.index'));
+        }
+
         $user->grupes()->detach();
         $user->delete();
         return redirect()->route('admin.users.index');

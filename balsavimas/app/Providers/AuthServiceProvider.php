@@ -25,6 +25,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('manage-users', function($user){
+            return $user->turiGrupes(['admin', 'author']);
+        });
+
+        Gate::define('edit_users', function($user){
+            return $user->turiGrupe('admin');
+        });
+
+        Gate::define('delete_users', function($user){
+            return $user->turiGrupe('admin');
+        });
+
     }
 }
