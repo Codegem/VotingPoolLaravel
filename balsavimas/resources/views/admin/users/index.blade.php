@@ -26,8 +26,12 @@
                                     {{ implode(',', $user->grupes()->get()->pluck('Group_Name')->toArray()) }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.users.edit', $user->id)}} " class="bnt btn-primary">Edit</a>
-                                    <a href="{{ route('admin.users.destroy', $user->id)}} " class="bnt btn-danger">Delete</a>
+                                    <a href="{{ route('admin.users.edit', $user->id)}} " class="btn btn-primary float-left">Edit</a>
+                                    <form action="{{ route('admin.users.destroy', $user)}}" method="POST">
+                                        @csrf
+                                        {{method_field('DELETE')}}
+                                    <button type="submit" class="btn btn-warning float-left">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
