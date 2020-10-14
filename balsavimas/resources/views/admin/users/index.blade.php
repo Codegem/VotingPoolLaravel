@@ -12,6 +12,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -21,6 +22,9 @@
                                 <th scope="row">{{$user -> id}} </th>
                                 <td>{{$user -> name}} </td>
                                 <td>{{$user -> email}} </td>
+                                <td>
+                                    {{ implode(',', $user->grupes()->get()->pluck('Group_Name')->toArray()) }}
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.users.edit', $user->id)}} " class="bnt btn-primary">Edit</a>
                                     <a href="{{ route('admin.users.destroy', $user->id)}} " class="bnt btn-danger">Delete</a>

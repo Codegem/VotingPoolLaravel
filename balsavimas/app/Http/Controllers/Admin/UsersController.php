@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Groups;
+use App\Models\Grupes;
 
 use Illuminate\Http\Request;
 
@@ -28,11 +28,8 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        $groups = Groups::all();
-        return view('admin.users.edit')->with([
-            'user' => $user,
-            'groups' => $groups
-        ]);
+        $grupes = Grupes::all();
+        return view('admin.users.edit', compact('user', 'grupes'));
     }
 
     /**
@@ -44,7 +41,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // siuncia array of id naudojant sync
+        $user->grupes()->sync($request->grupes);
+        return redirect()->route('admin.users.index');
     }
 
     /**

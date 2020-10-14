@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Groups;
+use App\Models\Grupes;
 use Illuminate\Support\Facades\DB;
 // naudojamas passwordam uzhashint
 use Illuminate\Support\Facades\Hash;
@@ -19,11 +19,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
      User::truncate();
-     DB::table('groups')->truncate();
+     DB::table('grupes_user')->truncate();
 
-     $adminGroup = Groups::where('Group_Name', 'admin')->first();
-     $authorGroup = Groups::where('Group_Name', 'author')->first();
-     $userGroup = Groups::where('Group_Name', 'user')->first();
+     $adminGroup = Grupes::where('Group_Name', 'admin')->first();
+     $authorGroup = Grupes::where('Group_Name', 'author')->first();
+     $userGroup = Grupes::where('Group_Name', 'user')->first();
 
      $admin = User::create([
          'name' => 'Admin User',
@@ -43,9 +43,9 @@ class UsersTableSeeder extends Seeder
          'password' => Hash::make('password')
      ]);
 
-    $admin->groups()->attach($adminGroup);
-    $author->groups()->attach($authorGroup);
-    $user->groups()->attach($userGroup);
+    $admin->grupes()->attach($adminGroup);
+    $author->grupes()->attach($authorGroup);
+    $user->grupes()->attach($userGroup);
 
     }
 }

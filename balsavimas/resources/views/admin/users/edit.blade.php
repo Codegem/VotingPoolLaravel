@@ -12,10 +12,10 @@
                         <form action="{{ route('admin.users.update', $user) }}" method="POST">
                             @csrf    
                             {{ method_field('PUT') }}
-                            @foreach($groups as $group)
+                            @foreach($grupes as $grupe)
                                 <div class="form-check">
-                                    <input type="checkbox" name="groups[]" value="{{ $group->id }}">
-                                    <label>{{ $group->name }}</label>
+                                    <input type="checkbox" name="grupes[]" value="{{ $grupe->id }}">
+                                    <label>{{ $grupe->Group_Name }}</label>
                                 </div>
                             @endforeach
                             <button type="submit" class="btn btn-primary">Update</button>

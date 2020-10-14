@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     // Aprasau priklausomybes priklauso daug useriu
 
-    public function groups(){
-        return $this->belongsToMany(Groups::class);
+    public function grupes(){
+        return $this->belongsToMany(Grupes::class);
     }
 }
