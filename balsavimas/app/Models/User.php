@@ -48,6 +48,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Grupes::class);
     }
 
+    // ar priklauso grupems 
+
     public function turiGrupes($grupes){
         if($this->grupes()->whereIn('Group_Name', $grupes)->first()){
             return true;
@@ -55,11 +57,20 @@ class User extends Authenticatable
         return false;
     }
 
+    // ar priklauso vienai kazkuriai grupei
+
     public function turiGrupe($grupe){
         if($this->grupes()->where('Group_Name', $grupe)->first()){
             return true;
         }
         return false;
     }
+
+    // Useriui priklauso poolai
+
+    public function voting(){
+        return $this->belongsToMany(Voting::class);
+    }
+
 
 }

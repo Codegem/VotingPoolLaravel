@@ -14,7 +14,8 @@
                             {{ method_field('PUT') }}
                             @foreach($grupes as $grupe)
                                 <div class="form-check">
-                                    <input type="checkbox" name="grupes[]" value="{{ $grupe->id }}">
+                                    <input type="checkbox" name="grupes[]" value="{{ $grupe->id }}"
+                                    @if($user->grupes->pluck('id')->contains($grupe->id)) checked @endif >
                                     <label>{{ $grupe->Group_Name }}</label>
                                 </div>
                             @endforeach
