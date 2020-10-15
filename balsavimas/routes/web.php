@@ -21,6 +21,12 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
+Route::get('/voting/create', 'App\Http\Controllers\VoteController@create');
+Route::post('/voting', 'App\Http\Controllers\VoteController@store');
+Route::get('/voting/{voting}', 'App\Http\Controllers\VoteController@show');
+Route::get('/visipool', 'App\Http\Controllers\VoteController@showall');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
