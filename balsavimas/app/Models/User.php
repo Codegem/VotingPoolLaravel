@@ -72,5 +72,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Voting::class);
     }
 
+    public function pool(){
+        return $this->belongsToMany(Pool::class);
+    }
+
 
 }

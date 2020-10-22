@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Voting;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class VoteController extends Controller
 {
@@ -12,16 +13,28 @@ class VoteController extends Controller
     }
 
     public function store(){
-        $data = request()->validate([
-            'title' => 'required',
-            'contentas' => 'required'
-        ]);
+        // $answers =  json_encode($request->except(['_token', 'title', 'contentas']));
+        // $answer = implode(array_keys(json_decode($answers, true)));
+        $data = new Voting();
+        $data->title = request('title');
+        // $data->contentas = request('contentas');
+        $data->answers = json_encode(request('answers'));
+        // dd($data);
+        $data['user_id'] = auth()->user()->id;
+        // $voting = \App\Models\Voting::create($data);    
+        $data->save();
+        // dd($answer);
+        // $data = request()->validate([
+        //     'title' => 'required',
+        //     'contentas' => 'required',
+        //     'answers' => $answer
+        //     // 'answers' => json_decode('answers[]')
+        //     // 'answers' => ''
+        // ]);
+        // dd(json_decode(request('answers[]')));
 
-    $data['user_id'] = auth()->user()->id;
+    return redirect('/visipool');
 
-    $voting = \App\Models\Voting::create($data);
-
-    return redirect('/voting/'.$voting->id);
     }
 
     public function show(Voting $voting){

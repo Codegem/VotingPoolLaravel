@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', 'HomeController@index');
 
 Route::get('/', 'App\Http\Controllers\HomeController@index');
-
 Route::get('/voting/create', 'App\Http\Controllers\VoteController@create');
 Route::post('/voting', 'App\Http\Controllers\VoteController@store');
 Route::get('/voting/{voting}', 'App\Http\Controllers\VoteController@show');
 Route::get('/visipool', 'App\Http\Controllers\VoteController@showall');
 
+Route::post('/poolvote', 'App\Http\Controllers\PoolController@regvote');
 
-Auth::routes();
+Auth::routes(); 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::resource('/admin/users', [App\Http\Controllers\Admin\UsersController::class, 'all']);

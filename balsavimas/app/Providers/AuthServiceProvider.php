@@ -36,6 +36,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete_users', function($user){
             return $user->turiGrupe('admin');
         });
-
+        Gate::define('manage-pools', function($user){
+            return $user->turiGrupe('admin');
+        });
     }
 }

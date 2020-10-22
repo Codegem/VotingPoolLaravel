@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Voting extends Model
 {
     // mass asignment protect
-    protected $guarded = [];
-
+        protected $guarded = [];
     // useriui priklauso daug poolu
     
     public function user(){

@@ -19,12 +19,45 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="exampleContentas">Content</label>
                         <input name="contentas" type="text" class="form-control" id="contentas" aria-describedby="contentasHelp" placeholder="Enter content">
                         <small id="contentasHelp" class="form-text text-muted">Apie ka voting poolas bus.</small>
                     
                         @error('contentas')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="examplequestion1">First Quote</label>
+                        <input name="answers[]" type="text" class="form-control" id="question1" aria-describedby="question1Help" placeholder="question-1">
+                        <small id="question1Help" class="form-text text-muted">First Quote</small>
+                    
+                        @error('question1')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="examplequestion2">Second Quote</label>
+                        <input name="answers[]" type="text" class="form-control" id="question2" aria-describedby="question2Help" placeholder="question-2">
+                        <small id="question2Help" class="form-text text-muted">Second Quote</small>
+                    
+                        @error('question2')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="examplequestion3">Third Quote</label>
+                        <input name="answers[]" type="text" class="form-control" id="question3" aria-describedby="question3Help" placeholder="question-3">
+                        <small id="question3Help" class="form-text text-muted">Third Quote</small>
+                    
+                        @error('question3')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     

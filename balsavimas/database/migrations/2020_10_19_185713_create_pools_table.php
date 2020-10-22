@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVotingsTable extends Migration
+class CreatePoolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVotingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('votings', function (Blueprint $table) {
+        Schema::create('pools', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('votings_id');
+            $table->String('pool_answer');
+            $table->unsignedBigInteger('voting_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            // $table->string('contentas');
-            $table->json('answers');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateVotingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('votings');
+        Schema::dropIfExists('pools');
     }
 }

@@ -59,6 +59,9 @@
                                     <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                         UsersManagement
                                     </a>
+                                    <a class="dropdown-item" href="/visipool">
+                                        PoolManagement
+                                    </a>
                                     @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
